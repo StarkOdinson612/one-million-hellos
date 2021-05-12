@@ -5,6 +5,7 @@ import time
 import math
 import concurrent.futures
 from threading import Timer
+from flask import Flask, render_template
 
 dictionary = PyDictionary()
 translator = GoogleTranslator(src='auto')
@@ -147,8 +148,15 @@ def synonymize():
     output = dictionary.synonym("Hello")
     taken = ["Hello"]
     l_in = 0
+    delay = 2
+    lt = time.time()
 
     while not stop:
+        
+        if lt - time.time() >= 2:
+            print(f'{len(output)}')
+            lt = time.time()
+
         for i in output:
             if i not in taken:
                 try:
@@ -162,12 +170,12 @@ def synonymize():
             else:
                 continue
 
-            # print(f'{word}: {len(output)}')
+            print(f'{len(output)}')
             file_obj = open("output.txt", "w+")
             file_obj.write('\n'.join(output))
             file_obj.close()
 
-            if len(output) >= 1000000:
+            if len(output) >= 10000:
                 stop = True
                 break
             else:
@@ -223,10 +231,14 @@ def translate_list(li, target):
         print(new_word)
     return output
 
+app = Flask(__name__)
+
+@app.route('/')
+def run():
+    with open("output.txt", "r") as f:
+        return render_template("home.html", text=f.read())
+
 if __name__ == '__main__':
-    # if not is_running:
-    #     keyboard.on_press_key("t", lambda _: translate_lang())
-    #     keyboard.on_press_key("a", lambda _: synonymize())
-    # else:
-    #     keyboard.on_press_key("e", lambda _: exit())
+    app.run(debug=True)
     synonymize()
+    
