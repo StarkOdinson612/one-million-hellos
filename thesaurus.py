@@ -4,7 +4,6 @@ import threading
 import time
 import math
 import concurrent.futures
-import keyboard
 from threading import Timer
 
 dictionary = PyDictionary()
