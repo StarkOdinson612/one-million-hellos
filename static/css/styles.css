@@ -1,0 +1,8 @@
+body, pre {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #dadada;
+    color: #000000;
+    margin: 20px;
+    padding: 0;
+    white-space:pre-line;
+}

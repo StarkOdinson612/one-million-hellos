@@ -5,7 +5,7 @@ import time
 import math
 import concurrent.futures
 from threading import Timer
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 
 dictionary = PyDictionary()
 translator = GoogleTranslator(src='auto')
@@ -175,7 +175,7 @@ def synonymize():
             file_obj.write('\n'.join(output))
             file_obj.close()
 
-            if len(output) >= 10000:
+            if len(output) >= 1000000:
                 stop = True
                 break
             else:
@@ -236,9 +236,15 @@ app = Flask(__name__)
 @app.route('/')
 def run():
     with open("output.txt", "r") as f:
-        return render_template("home.html", text=f.read())
+        return '\n'.join(render_template("home.html", text=f.read()).split('\n'))
+
+@app.route('/api')
+def run_api():
+    with open("output.txt", "r") as f:
+        return jsonify(text = f.read())
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
-    synonymize()
-    
+    x = threading.Thread(target=synonymize)
+    x.start()
+    app.run()

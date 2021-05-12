@@ -3,9 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title>One Million Hellos</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <script src="../static/javascript/refreshAPI.js"></script>
     </head>
     <body>
-        <pre>
+        <pre id="list">
             {{ text }}
         </pre>
     </body>
