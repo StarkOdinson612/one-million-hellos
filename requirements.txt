@@ -1,3 +1,4 @@
 PyDictionary
 deep_translator
-Flask
+flask
+flask-cors

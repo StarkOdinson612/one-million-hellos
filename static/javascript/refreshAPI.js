@@ -1,5 +1,5 @@
 setInterval(async function() {
-    await fetch("http://localhost/api")
+    await fetch("http://localhost:5000/api")
     .then(response => response.json())
     .then(data => {
     //here you need to do the action to change the data on the page

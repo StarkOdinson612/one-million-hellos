@@ -5,7 +5,8 @@ import time
 import math
 import concurrent.futures
 from threading import Timer
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
+from flask_cors import CORS, cross_origin
 
 dictionary = PyDictionary()
 translator = GoogleTranslator(src='auto')
@@ -232,16 +233,26 @@ def translate_list(li, target):
     return output
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
+@cross_origin()
 def run():
     with open("output.txt", "r") as f:
-        return '\n'.join(render_template("home.html", text=f.read()).split('\n'))
+        return '\n'.join(render_template("index.html", text=f.read()).split('\n'))
 
 @app.route('/api')
+@cross_origin()
 def run_api():
     with open("output.txt", "r") as f:
         return jsonify(text = f.read())
+
+# @blueprint.after_request # blueprint can also be app~~
+# def after_request(response):
+#     header = response.headers
+#     header['Access-Control-Allow-Origin'] = '*'
+#     return response
 
 
 if __name__ == '__main__':
