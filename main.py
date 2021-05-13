@@ -232,7 +232,7 @@ def translate_list(li, target):
         print(new_word)
     return output
 
-app = Flask(one_million_hellos)
+app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 

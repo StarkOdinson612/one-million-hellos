@@ -1,1 +1,1 @@
-web: gunicorn main:one_million_hellos
+web: gunicorn main:main
