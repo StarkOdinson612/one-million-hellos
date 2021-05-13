@@ -2,3 +2,4 @@ PyDictionary
 deep_translator
 flask
 flask-cors
+gunicorn
