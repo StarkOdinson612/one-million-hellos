@@ -253,9 +253,3 @@ def run_api():
 #     header = response.headers
 #     header['Access-Control-Allow-Origin'] = '*'
 #     return response
-
-
-if __name__ == '__main__':
-    x = threading.Thread(target=synonymize)
-    x.start()
-    app.run()
