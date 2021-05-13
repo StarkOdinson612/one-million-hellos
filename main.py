@@ -139,7 +139,10 @@ def get_session():
         thread_local.session = requests.Session()
     return thread_local.session
 
+final_out = ""
+
 def synonymize():
+    global final_out
     s_time = time.time()
     is_running = True
 
@@ -176,7 +179,9 @@ def synonymize():
             file_obj.write('\n'.join(output))
             file_obj.close()
 
-            if len(output) >= 1000000:
+            final_out += '\n'.join(output)
+
+            if len(output) >= 10000000:
                 stop = True
                 break
             else:
