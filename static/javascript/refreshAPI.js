@@ -9,4 +9,4 @@ setInterval(async function() {
     .catch((error) => {
         console.error('Error:', error);
     });
-}, 3);
+}, 300);
