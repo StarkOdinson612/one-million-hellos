@@ -232,7 +232,7 @@ def translate_list(li, target):
         print(new_word)
     return output
 
-app = Flask(__name__)
+app = Flask(one_million_hellos)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
@@ -257,4 +257,4 @@ def run_api():
 if __name__ == '__main__':
     x = threading.Thread(target=synonymize)
     x.start()
-    app.run()
+    one_million_hellos.run()
