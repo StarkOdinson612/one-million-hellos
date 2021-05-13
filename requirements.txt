@@ -5,5 +5,5 @@ itsdangerous==2.0.0
 Jinja2==3.0.0
 MarkupSafe==2.0.0
 Werkzeug==2.0.0
-PyDictionary
-deep_translate
+PyDictionary==2.0.1
+deep_translator==1.4.2
