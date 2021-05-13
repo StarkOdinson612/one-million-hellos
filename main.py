@@ -251,7 +251,7 @@ def run():
 @cross_origin()
 def run_api():
     with open("output.txt", "r") as f:
-        return jsonify(text = f.read())
+        return jsonify(text = final_out)
 
 if __name__ == '__main__':
     x = threading.Thread(target=synonymize)
