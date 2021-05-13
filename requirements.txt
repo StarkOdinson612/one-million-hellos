@@ -7,3 +7,4 @@ MarkupSafe==2.0.0
 Werkzeug==2.0.0
 PyDictionary==2.0.1
 deep_translator==1.4.2
+flask_cors
