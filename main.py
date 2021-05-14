@@ -247,11 +247,11 @@ def run():
     with open("output.txt", "r") as f:
         return '\n'.join(render_template("index.html", text=f.read()).split('\n'))
 
-@app.route('/api')
-@cross_origin()
-def run_api():
-    with open("output.txt", "r") as f:
-        return jsonify(text = final_out)
+# @app.route('/api')
+# @cross_origin()
+# def run_api():
+#     with open("output.txt", "r") as f:
+#         return jsonify(text = f.read())
 
 if __name__ == '__main__':
     x = threading.Thread(target=synonymize)
